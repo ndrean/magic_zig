@@ -1,4 +1,4 @@
-# `libmagic`  wrapper for `Zig`
+# libmagic  wrapper for Zig
 
 **building** a very thin wrapper, mostly learning.
 
