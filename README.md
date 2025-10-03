@@ -1,6 +1,6 @@
 # libmagic  wrapper for Zig
 
-**building** a very thin wrapper, mostly learning.
+**building** a very thin wrapper. I need to check if the uploaded files are really images.
 
 This project uses [libmagic](https://man7.org/linux/man-pages/man3/libmagic.3.html#LIBRARY) from the file project.
 Copyright (c) Ian F. Darwin 1986-1995.
