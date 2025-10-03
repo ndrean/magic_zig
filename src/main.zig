@@ -73,12 +73,26 @@ test "from paths" {
         "src/tests/icons8-globe-24.png",
         "src/tests/t.png",
         "src/tests/test.txt",
+        "src/tests/eggs-2-svgrepo-com.svg",
+        "src/tests/ex_module.ex",
+        "src/tests/test.json",
+        "src/tests/robots.txt.gz",
+        "README.md",
+        "src/tests/htmz.sql3",
+        "src/tests/simple.js",
     };
 
     const expected_mimes = [_][]const u8{
         "image/png",
         "text/plain",
         "text/plain",
+        "image/svg+xml",
+        "text/plain",
+        "application/json",
+        "application/gzip",
+        "text/plain",
+        "application/vnd.sqlite3",
+        "application/javascript",
     };
 
     for (paths, 0..) |path, i| {
