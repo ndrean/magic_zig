@@ -1,6 +1,6 @@
 # `libmagic`  wrapper for `Zig`
 
-**building**
+**building** a very thin wrapper, mostly learning.
 
 This project uses [libmagic](https://man7.org/linux/man-pages/man3/libmagic.3.html#LIBRARY) from the file project.
 Copyright (c) Ian F. Darwin 1986-1995.
