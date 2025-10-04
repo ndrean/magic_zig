@@ -1,11 +1,11 @@
-//! root.zig is the root source file when making a library. A very thin wrapper around libmagic.
+//! A very thin wrapper around libmagic.
 const std = @import("std");
 
 const m = @cImport(@cInclude("magic.h"));
 
 /// A simple Zig wrapper around libmagic
 ///
-/// Example usage:
+/// ## Example usage:
 /// ```zig
 /// const magic = @import("path/to/zexplorer/src/root.zig");
 ///
@@ -32,6 +32,7 @@ pub const Magic = struct {
 
     pub fn load(self: *Magic) !void {
         if (m.magic_load(self.cookie, null) != 0) {
+            self.deinit();
             return error.MagicLoadFailed;
         }
     }
