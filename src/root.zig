@@ -3,6 +3,21 @@ const std = @import("std");
 
 const m = @cImport(@cInclude("magic.h"));
 
+/// A simple Zig wrapper around libmagic
+///
+/// Example usage:
+/// ```zig
+/// const magic = @import("path/to/zexplorer/src/root.zig");
+///
+/// const allocator = std.heap.page_allocator;
+/// var magic = try magic.Magic.init();
+/// defer magic.deinit();
+/// try magic.load();
+///
+/// const file_type = try magic.from_path(allocator, "somefile.txt");
+/// std.debug.print("File type: {s}\n", .{file_type});
+/// }
+/// ```
 pub const Magic = struct {
     cookie: m.magic_t,
 
@@ -26,6 +41,7 @@ pub const Magic = struct {
         return err;
     }
 
+    /// Get the file type from a file path
     pub fn from_path(self: *Magic, allocator: std.mem.Allocator, path: []const u8) ![]const u8 {
         const path_z = try allocator.dupeZ(u8, path);
         defer allocator.free(path_z);
@@ -37,6 +53,7 @@ pub const Magic = struct {
         return std.mem.span(res);
     }
 
+    /// Get the file type from a memory buffer
     pub fn from_buffer(self: *Magic, buffer: []const u8) ![]const u8 {
         const res = m.magic_buffer(self.cookie, buffer.ptr, buffer.len);
         if (res == null) {
@@ -45,6 +62,7 @@ pub const Magic = struct {
         return std.mem.span(res);
     }
 
+    /// Get the file type from a file descriptor
     pub fn from_handle(self: *Magic, handle: i32) ![]const u8 {
         const res = m.magic_descriptor(self.cookie, handle);
         if (res == null) {
