@@ -1,4 +1,4 @@
-//! By convention, root.zig is the root source file when making a library.
+//! root.zig is the root source file when making a library. A very thin wrapper around libmagic.
 const std = @import("std");
 
 const m = @cImport(@cInclude("magic.h"));
